@@ -1,0 +1,26 @@
+<h1>Phonebook Component template</h1>
+
+<form>
+  <label for="name">Name: </label>
+  <input [(ngModel)]="name" type="text" id="name" name="name" />
+
+  <label for="phone">Phone: </label>
+  <input [(ngModel)]="phone" type="text" id="text" name="phone" />
+
+  <input type="submit" value="Add Contact" (click)='addContact()'/>
+</form>
+
+<table *ngIf="phonebook && phonebook.length">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Phone</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let contact of phonebook">
+      <td>{{ contact.name }}</td>
+      <td>{{ contact.phone }}</td>
+    </tr>
+  </tbody>
+</table>
