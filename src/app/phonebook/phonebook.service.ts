@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { IContact } from './IContact';
+import { IContact } from '../shared/interfaces';
 
 @Injectable({
   providedIn: 'root'

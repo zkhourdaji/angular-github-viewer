@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IContact } from './IContact';
+import { IContact } from '../shared/interfaces';
 import { PhonebookService } from './phonebook.service';
 
 @Component({
@@ -15,5 +15,5 @@ export class PhonebookComponent {
     this.phonebookService.addContact(this.name, this.phone);
   }
 
-  contacts: IContact[] = this.phonebookService.getContacts();
+  //contacts: IContact[] = this.phonebookService.getContacts();
 }

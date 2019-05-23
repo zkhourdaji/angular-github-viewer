@@ -1,15 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { IUser } from '../IUser';
-import { IRepo } from '../IRepo';
-import { GithubService } from '../github.service';
+import { IUser } from '../../shared/interfaces';
+import { IRepo } from '../../shared/interfaces';
+import { GithubService } from '../../core/github.service';
 
 @Component({
   selector: 'app-search-user-form',
   templateUrl: './search-user-form.component.html'
 })
 export class SearchUserFormComponent {
-  constructor(private http: HttpClient, private githubService: GithubService) {}
+  constructor() {}
 
   username = '';
   user: IUser;
