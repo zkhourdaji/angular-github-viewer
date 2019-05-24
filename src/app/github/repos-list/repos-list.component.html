@@ -1,0 +1,19 @@
+<div *ngIf="repos">
+    <h4>Repos:</h4>
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Stars</th>
+                <th>Language</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let repo of repos">
+                <td>{{ repo.name }}</td>
+                <td>{{ repo.stargazers_count }}</td>
+                <td>{{ repo.language }}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>

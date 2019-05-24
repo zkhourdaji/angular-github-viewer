@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { IUser } from '../../shared/interfaces';
 import { IRepo } from '../../shared/interfaces';
@@ -9,20 +9,11 @@ import { GithubService } from '../../core/github.service';
   templateUrl: './search-user-form.component.html'
 })
 export class SearchUserFormComponent {
-  constructor() {}
 
-  username = '';
-  user: IUser;
-  repos: IRepo;
+  @Output() search = new EventEmitter<string>();
+  usernameInputField = '';
 
   onSubmit(): void {
-    this.githubService.getUserDetails(this.username).subscribe(data => {
-      this.user = data;
-      this.githubService.getRepos(data.repos_url).subscribe(repos => {
-        this.repos = repos;
-        console.log(repos);
-      });
-    });
-    return;
+    this.search.emit(this.usernameInputField);
   }
 }

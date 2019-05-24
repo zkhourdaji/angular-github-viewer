@@ -1,39 +1,6 @@
 <h1>Search Github User</h1>
 <form (ngSubmit)="onSubmit()">
   <label for="username">Username</label>
-  <input
-    id="username"
-    name="username"
-    type="text"
-    required
-    (click)='onSubmit()'
-  />
-  <input type="submit" />
+  <input id="username" name="username" type="text" required [(ngModel)]='usernameInputField' />
+  <input type="submit" (click)='onSubmit' />
 </form>
-
-<div *ngIf="user">
-  <h1>Username: {{ user.login }}</h1>
-  <img width="100px" src="{{ user.avatar_url }}" />
-  <p>Number of Followers: {{ user.followers }}</p>
-  <p>Number of Followings: {{ user.following }}</p>
-</div>
-
-<div *ngIf="repos">
-  <h4>Repos:</h4>
-  <table>
-    <thead>
-      <tr>
-        <th>Name</th>
-        <th>Stars</th>
-        <th>Language</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let repo of repos">
-        <td>{{ repo.name }}</td>
-        <td>{{ repo.stargazers_count }}</td>
-        <td>{{ repo.language }}</td>
-      </tr>
-    </tbody>
-  </table>
-</div>
