@@ -6,6 +6,5 @@ import { IUser } from 'src/app/shared/interfaces';
   templateUrl: './user.details.component.html'
 })
 export class UserDetailsComponent {
-
   @Input() user: IUser;
 }

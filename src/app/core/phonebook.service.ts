@@ -5,15 +5,13 @@ import { IContact } from '../shared/interfaces';
   providedIn: 'root'
 })
 export class PhonebookService {
-  private contacts: IContact[] = [];
+  public contacts: IContact[] = [];
 
   getContacts(): IContact[] {
     return this.contacts;
   }
 
   addContact(name: string, phone: string): void {
-    //console.log(name + ' ' + phone);
-    console.log(this.contacts);
     const newId = this.getNewId();
     const newContact = {
       name: name,
@@ -21,9 +19,17 @@ export class PhonebookService {
       id: newId
     };
     this.contacts.push(newContact);
+    console.log(this.contacts);
+  }
+
+  editContact(id: number, name: string, phone: string): void {
+    let existingContact = this.contacts.find(c => c.id == id);
+    existingContact.name = name;
+    existingContact.phone = phone;
   }
 
   deleteContact(id): void {
+    console.log('deleting contact with id: ' + id);
     this.contacts = this.contacts.filter(c => c.id !== id);
   }
 
@@ -34,5 +40,9 @@ export class PhonebookService {
     } else {
       return 0;
     }
+  }
+
+  getContactById(id: number): IContact {
+    return this.contacts.find(c => c.id == id);
   }
 }

@@ -7,20 +7,33 @@
   <label for="phone">Phone: </label>
   <input [(ngModel)]="phone" type="text" id="text" name="phone" />
 
-  <input type="submit" value="Add Contact" (click)='addContact()'/>
+  <input
+    type="submit"
+    value="{{ editMode ? 'Edit' : 'Add' }} Contact"
+    (click)="editMode ? onAddOrEdit(true) : onAddOrEdit(false)"
+  />
 </form>
 
-<table *ngIf="phonebook && phonebook.length">
+<table *ngIf="phonebookService.contacts">
   <thead>
     <tr>
       <th>Name</th>
       <th>Phone</th>
+      <th>Actions</th>
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let contact of phonebook">
+    <tr *ngFor="let contact of phonebookService.contacts">
       <td>{{ contact.name }}</td>
       <td>{{ contact.phone }}</td>
+      <td>
+        <button (click)="phonebookService.deleteContact(contact.id)">
+          Delete
+        </button>
+        <button (click)="edit(contact.id)">
+          Edit
+        </button>
+      </td>
     </tr>
   </tbody>
 </table>
